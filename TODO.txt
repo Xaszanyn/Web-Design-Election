@@ -1,0 +1,34 @@
+
+
+YORUMLAR KISMI
+
+
+TOPLAYIP OBFUSCATION
+TR.GG TESTİ
+
+
+CEVAPLARI VE SHEETİ SIFIRLA
+
+////
+=QUERY({Tahminler!A2:C\ArrayFormula(IF(Tahminler!B2:B<>""; COUNTIF('Beğeniler'!B:B; Tahminler!B2:B); ""))}; "SELECT Col2, Col3, Col4 ORDER BY Col4 DESC, Col1 ASC")
+
+SET "Tahminler"
+SET "Beğeniler"
+SET "Tablo"
+
+=QUERY({Tahminler!A2:C\ArrayFormula(IF(Tahminler!B2:B<>""; COUNTIF('Beğeniler'!B:B; Tahminler!B2:B); ""))}; "SELECT Col2, Col3, Col4 ORDER BY Col4 DESC, Col1 ASC")
+
+
+RENAME ALL HEADERS
+////
+
+
+
+PABLİŞ !!!
+
+
+GİTHUBA EKLE
+
+
+---İNDİRME ZIMBIRTISI KALDI
+---İSİM İLE ARAMA
