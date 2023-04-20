@@ -46,7 +46,7 @@ const responsiveTable = document.querySelector("#responsive-table");
 
 function selectParty() {
   selected = partySelect.value.split("|");
-  partyColor.style.backgroundColor = selected[0];
+  partyColor.style.backgroundColor = selected[1];
   mode = 0;
 }
 
@@ -114,7 +114,7 @@ function ratio(input, index) {
 function notify(message) {
   if (notificate) return;
 
-  notification.textContent = message;
+  notification.innerHTML = message;
   notification.classList.add("show");
   notificate = setTimeout(() => {
     notification.classList.remove("show");
@@ -160,7 +160,7 @@ async function send(button) {
       charCode != 252
     ) {
       notify(
-        `Lütfen geçersiz karakter girmeyin. [ a-z, A-Z, 0-9, boşluk, - _ ( ) , . : ; # " ve ' sembolleri geçerlidir.]`
+        `Lütfen geçersiz karakter girmeyin. [ a-z A-Z 0-9 boşluk - _ ( ) , . ? ! : ; " ' ^ + % & / = * @ # | ve ~ sembolleri geçerlidir.]`
       );
       return;
     }
@@ -170,7 +170,6 @@ async function send(button) {
 
   await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${id}/values/Tablo!A:A?key=${api}`).then((response) =>
     response.json().then((data) => {
-      console.log(data);
       for (let d = 0; d < data.values.length; d++) {
         if (name.value == data.values[d]) {
           same = true;
@@ -320,7 +319,6 @@ async function guesses(direction, disabled) {
 
 function display(data) {
   data = JSON.parse(data);
-  console.log(data);
 
   clean();
 

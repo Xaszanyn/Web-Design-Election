@@ -14,7 +14,6 @@
   --light-green: #7fdf7f;
   --light-red: #ef4f4f;
 
-  --dark-blue: #0f2f4f;
   --dark-gray: #afafaf;
 
   --blank-gray: #cfdfef;
@@ -127,7 +126,7 @@ select:focus,
 }
 
 #send i:hover {
-  color: var(--dark-blue);
+  color: var(--blue);
 }
 
 #tools span {
@@ -426,8 +425,8 @@ td:nth-of-type(3) i:hover {
 
 .chp-iyi-parti {
   color: var(--party-chp);
+  box-shadow: 0 0 0 0.2rem var(--party-iyi-parti);
   font-size: 0.8rem;
-  padding: 0.2rem;
   background-color: var(--party-iyi-parti);
 }
 
@@ -562,8 +561,8 @@ footer a:first-of-type {
     margin-right: 0;
   }
 
-  #share-guess {
-    margin-right: auto;
+  #download {
+    margin-left: auto;
   }
 
   #panel {
@@ -615,5 +614,9 @@ footer a:first-of-type {
 
   tr.blank td {
     padding: 1rem;
+  }
+
+  #notification {
+    width: 30rem;
   }
 }
