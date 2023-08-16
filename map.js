@@ -5,6 +5,9 @@ const api = `AIzaSyBbMf67jPrNOb9QTxAO3itGsNy70bYhaEw`;
 
 const html = document.querySelector("html");
 
+const sectionButtons = document.querySelectorAll("nav a");
+const sections = document.querySelector("main");
+
 const partyColor = document.querySelector("#party-color");
 const partySelect = document.querySelector("select");
 
@@ -37,10 +40,14 @@ color = ["#ef7f0f", "#0f5fcf", "#cf2f3f", "#0fbfcf", "#3F4F5F", "#9f2f8f", "#1f8
 var sended = false;
 
 var pointer = 0;
+var commentPointer = 0;
 
 const regex = ` -()_,.:;#'"^+%&/=?!*|~@`;
 
 const responsiveTable = document.querySelector("#responsive-table");
+
+const commentName = document.querySelector("#comment input");
+const commentText = document.querySelector("#comment textarea");
 
 /* ================================================== Functions ================================================== */
 
@@ -140,24 +147,24 @@ async function send(button) {
   // Geçersiz !/^[a-zA-Z0-9ığüşöçİĞÜŞÖÇ`\-_\(\),.:;#"']+$/u.test(name.value)
 
   for (let c = 0; c < name.value.length; c++) {
-    let charCode = name.value[c].charCodeAt(0);
+    let code = name.value[c].charCodeAt(0);
     if (
-      !(charCode >= 97 && charCode <= 122) &&
-      !(charCode >= 65 && charCode <= 90) &&
-      !(charCode >= 48 && charCode <= 57) &&
+      !(code >= 97 && code <= 122) &&
+      !(code >= 65 && code <= 90) &&
+      !(code >= 48 && code <= 57) &&
       !regex.includes(name.value[c]) &&
-      charCode != 199 &&
-      charCode != 231 &&
-      charCode != 286 &&
-      charCode != 287 &&
-      charCode != 304 &&
-      charCode != 305 &&
-      charCode != 214 &&
-      charCode != 246 &&
-      charCode != 350 &&
-      charCode != 351 &&
-      charCode != 220 &&
-      charCode != 252
+      code != 199 &&
+      code != 231 &&
+      code != 286 &&
+      code != 287 &&
+      code != 304 &&
+      code != 305 &&
+      code != 214 &&
+      code != 246 &&
+      code != 350 &&
+      code != 351 &&
+      code != 220 &&
+      code != 252
     ) {
       notify(
         `Lütfen geçersiz karakter girmeyin. [ a-z A-Z 0-9 boşluk - _ ( ) , . ? ! : ; " ' ^ + % & / = * @ # | ve ~ sembolleri geçerlidir.]`
@@ -170,10 +177,12 @@ async function send(button) {
 
   await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${id}/values/Tablo!A:A?key=${api}`).then((response) =>
     response.json().then((data) => {
-      for (let d = 0; d < data.values.length; d++) {
-        if (name.value == data.values[d]) {
-          same = true;
-          break;
+      if (data.values) {
+        for (let d = 0; d < data.values.length; d++) {
+          if (name.value == data.values[d]) {
+            same = true;
+            break;
+          }
         }
       }
     })
@@ -370,6 +379,107 @@ async function action(type) {
   });
 }
 
+function comment(button) {
+  if (commentText != document.activeElement && !button) return;
+
+  if (!commentName.value) {
+    notify("İsim / Başlık boş olamaz.");
+    return;
+  }
+
+  if (!commentText.value) {
+    notify("Yorum boş olamaz.");
+    return;
+  }
+
+  if (commentName.value.length > 20) {
+    notify("İsim / Başlık 20 karakteri aşmamalı.");
+    return;
+  }
+
+  if (commentText.value.length > 300) {
+    notify("Yorum 300 karakteri aşmamalı.");
+    return;
+  }
+
+  for (let h = 0; h < commentName.value.length; h++) {
+    let code = commentName.value[h].charCodeAt(0);
+    if (
+      !(code >= 97 && code <= 122) &&
+      !(code >= 65 && code <= 90) &&
+      !(code >= 48 && code <= 57) &&
+      !regex.includes(commentName.value[h]) &&
+      code != 199 &&
+      code != 231 &&
+      code != 286 &&
+      code != 287 &&
+      code != 304 &&
+      code != 305 &&
+      code != 214 &&
+      code != 246 &&
+      code != 350 &&
+      code != 351 &&
+      code != 220 &&
+      code != 252
+    ) {
+      notify(
+        `Lütfen geçersiz karakter girmeyin. [ a-z A-Z 0-9 boşluk - _ ( ) , . ? ! : ; " ' ^ + % & / = * @ # | ve ~ sembolleri geçerlidir.]`
+      );
+
+      return;
+    }
+  }
+
+  for (let i = 0; i < commentText.value.length; i++) {
+    let code = commentText.value[i].charCodeAt(0);
+    if (
+      !(code >= 97 && code <= 122) &&
+      !(code >= 65 && code <= 90) &&
+      !(code >= 48 && code <= 57) &&
+      !regex.includes(commentText.value[i]) &&
+      code != 199 &&
+      code != 231 &&
+      code != 286 &&
+      code != 287 &&
+      code != 304 &&
+      code != 305 &&
+      code != 214 &&
+      code != 246 &&
+      code != 350 &&
+      code != 351 &&
+      code != 220 &&
+      code != 252
+    ) {
+      notify(
+        `Lütfen geçersiz karakter girmeyin. [ a-z A-Z 0-9 boşluk - _ ( ) , . ? ! : ; " ' ^ + % & / = * @ # | ve ~ sembolleri geçerlidir.]`
+      );
+
+      return;
+    }
+  }
+
+  let data = new FormData();
+
+  data.append("entry.1767825299", commentName.value);
+  data.append("entry.832562686", commentText.value);
+
+  fetch("https://docs.google.com/forms/d/e/1FAIpQLSdzfOCQSbmzush7EYSFPQeNx8VRRa1HMOrPaKWV4TVTEdcVTA/formResponse", {
+    method: "POST",
+    body: data,
+  });
+
+  notify("Yorumunuz kaydedildi.");
+}
+
+function section(index) {
+  sectionButtons.forEach((button, i) => {
+    if (index == i) button.classList.add("selected");
+    else button.classList.remove("selected");
+  });
+
+  sections.style.transform = `translateX(calc(${-index} * var(--screen)))`;
+}
+
 /* ================================================== Events ================================================== */
 
 provinces.forEach((province) => {
@@ -413,6 +523,7 @@ window.addEventListener("keydown", (event) => {
   switch (event.key) {
     case "Enter":
       send();
+      comment();
       break;
   }
 });

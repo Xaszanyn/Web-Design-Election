@@ -1,0 +1,53 @@
+
+https://docs.google.com/forms/d/1foUEKsilcQPAaYJv2hCbngoxkXutleCvb5iO9-pWet0/edit#response=ACYDBNhrwlmPLktUGbiSkX0PwV9lreA3351lLZ95LMgEaMIi1ypGgkFd9b_ZIErH02wsAF8
+
+
+https://docs.google.com/forms/d/1YzlRDX9hn81shaSjniNcBWAJ2EsgCLMXy8b26GFvfo0/edit#response=ACYDBNj1q5_4NVMqVomRxrFjAVNNMoFICmpRr2ZkZKQGiuzUIusyH991-JPxHEtY3ABJ3Wk
+
+
+https://docs.google.com/forms/d/1ccnaUnp2DE6IIkTjSc9vE3cqppckUiJ6ltnxUZ6mSFk/edit#response=ACYDBNihNqzZZbTGNAwGqyeqrTpQoImEtHB7rDg3YvGbwYXaqiQAQcw4CwowEKRTG_R7FE8
+
+
+
+
+YORUMLAR KISMI
+
+TIKANDIM İMDAAAAAAAAT-
+
+biraz css düzeltme
+responsive kısım
+js kodları
+  -yorum gönderme kısım
+  -loadlama
+  - ek load yükleme kısmı
+
+
+TOPLAYIP OBFUSCATION
+TR.GG TESTİ
+
+
+CEVAPLARI VE SHEETİ SIFIRLA
+
+////
+=QUERY({Tahminler!A2:C\ArrayFormula(IF(Tahminler!B2:B<>""; COUNTIF('Beğeniler'!B:B; Tahminler!B2:B); ""))}; "SELECT Col2, Col3, Col4 ORDER BY Col4 DESC, Col1 ASC")
+
+SET "Tahminler"
+SET "Beğeniler"
+SET "Tablo"
+
+=QUERY({Tahminler!A2:C\ArrayFormula(IF(Tahminler!B2:B<>""; COUNTIF('Beğeniler'!B:B; Tahminler!B2:B); ""))}; "SELECT Col2, Col3, Col4 ORDER BY Col4 DESC, Col1 ASC")
+
+
+RENAME ALL HEADERS
+////
+
+
+
+PABLİŞ !!!
+
+
+GİTHUBA EKLE
+
+
+---İNDİRME ZIMBIRTISI KALDI
+---İSİM İLE ARAMA

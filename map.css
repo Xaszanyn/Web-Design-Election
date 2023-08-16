@@ -38,6 +38,8 @@
   --fast: 0.2s;
   --instant-delay: 0s ease 0.2s;
   --fast-delay: 0.2s ease 0.2s;
+
+  --screen: 100vw;
 }
 
 * {
@@ -55,15 +57,63 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  font-family: "Inter", sans-serif;
+  color: var(--black);
+  background-color: var(--black);
+  overflow-x: hidden;
+}
+
 a {
   color: inherit;
   text-decoration: none;
 }
 
-body {
-  font-family: "Inter", sans-serif;
-  color: var(--black);
+ul {
+  list-style: none;
+}
+
+/* ================================================== Navigation ================================================== */
+
+nav {
+  font-size: 1rem;
+  padding: 1rem;
+  background-color: var(--light-red);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+}
+
+nav h1 {
+  margin-right: 1rem;
+}
+
+nav a {
+  background-color: var(--white);
+  color: var(--light-red);
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  border-radius: 5rem;
+  margin-left: 0.5rem;
+  transition: background-color var(--fast), color var(--fast);
+}
+
+nav a.selected {
   background-color: var(--black);
+  color: var(--white);
+}
+
+/* ================================================== Main ================================================== */
+
+main {
+  width: calc(3 * var(--screen));
+  display: flex;
+  transition: transform var(--fast);
+}
+
+main > section {
+  background-color: var(--white);
+  width: var(--screen);
 }
 
 /* ================================================== Tools ================================================== */
@@ -93,7 +143,7 @@ select,
   padding: 0.5rem 1rem;
   font-size: 1rem;
   font-family: inherit;
-  border: 1px solid var(--blank-gray);
+  border: none;
   border-radius: 10rem;
   outline: none;
 }
@@ -292,7 +342,7 @@ text {
 /* ================================================== Guess ================================================== */
 
 #guess {
-  padding: 1rem 20rem;
+  padding: 5rem 20rem 2.5rem;
   background-color: var(--light-gray);
 }
 
@@ -415,7 +465,7 @@ td {
 }
 
 td:nth-of-type(3) i {
-  color: #af1f2f;
+  color: var(--light-red);
   margin-right: 0.2rem;
 }
 
@@ -459,6 +509,96 @@ td:nth-of-type(3) i:hover {
   transform: translateX(0);
   opacity: 1;
   transition: opacity var(--fast);
+}
+
+/* ================================================== Comment ================================================== */
+
+#comment {
+  background-color: var(--light-gray);
+  padding: 2.5rem 20rem;
+}
+
+#comment h2 {
+  margin-bottom: 1rem;
+}
+
+#comment li {
+  margin-bottom: 2rem;
+  display: flex;
+}
+
+#comment li div:first-of-type {
+  width: calc(100% - 5rem);
+}
+
+#comment li div:first-of-type p:first-of-type {
+  font-weight: bold;
+  font-style: italic;
+}
+
+#comment li div:last-of-type {
+  width: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#comment li p:first-of-type {
+  margin-bottom: 0.5rem;
+}
+
+#comment ul i {
+  padding: 0.5rem;
+  border-radius: 10rem;
+  color: var(--light-red);
+  cursor: pointer;
+  margin-right: 0.2rem;
+  transition: background-color var(--fast);
+}
+
+#comment ul i:hover {
+  background-color: var(--table-gray);
+}
+
+#comment input {
+  border-radius: 10rem;
+  margin-bottom: 1rem;
+  width: 12rem;
+  padding: 0.5rem 1rem;
+}
+
+#comment input,
+textarea {
+  font: inherit;
+  display: block;
+  outline: none;
+  border: none;
+}
+
+#share-comment {
+  position: relative;
+}
+
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  resize: none;
+  border-top-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+}
+
+#share-comment i {
+  position: absolute;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: var(--light-blue);
+  bottom: 0.75rem;
+  right: 0.75rem;
+  transition: color var(--fast);
+}
+
+#share-comment i:hover {
+  color: var(--blue);
 }
 
 /* ================================================== Footer ================================================== */
